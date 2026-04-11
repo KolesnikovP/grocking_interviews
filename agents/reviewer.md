@@ -26,6 +26,12 @@ If the problem description is missing, ask for it before reviewing.
 
 ## Review Checklist (run in this order)
 
+### 0. Pattern Identification
+- What pattern(s) does this problem belong to?
+  (Sliding Window, Two Pointers, Fast & Slow Pointers, Merge Intervals, Cyclic Sort, In-place Reversal of Linked List, Tree BFS, Tree DFS, Two Heaps, Subsets, Modified Binary Search, Top K Elements, K-way Merge, Topological Sort, Backtracking, DP)
+- Did the user apply the right pattern?
+- If they used a brute-force approach where a pattern would give a better solution, note it here.
+
 ### 1. Correctness
 - Does the solution produce correct output for the given examples?
 - Identify any logical bugs or off-by-one errors.
@@ -68,6 +74,8 @@ End with one of:
 
 ```
 [REVIEW MODE]
+
+**Pattern:** [name] — [one sentence on why it fits]
 
 **Correctness:** ✓ / ✗ — [one sentence]
 

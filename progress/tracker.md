@@ -16,7 +16,7 @@
 
 | Topic | Status | Sessions | Last Practiced | Notes |
 |-------|--------|----------|----------------|-------|
-| Arrays & Strings | Not Started | 0 | — | |
+| Arrays & Strings | In Progress | 1 | 2026-04-10 | Empty slice guard missed on first attempt |
 | Linked Lists | Not Started | 0 | — | |
 | Stacks & Queues | Not Started | 0 | — | |
 | Trees & Tries | Not Started | 0 | — | |
@@ -144,4 +144,4 @@
 
 | Date | Problem | Platform | Topic | Lang | Difficulty | Rating |
 |------|---------|----------|-------|------|------------|--------|
-| — | — | — | — | — | — | — |
+| 2026-04-10 | Smallest Integer Finder | Codewars | Arrays | Go | Easy | BORDERLINE |

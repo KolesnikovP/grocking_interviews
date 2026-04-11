@@ -16,8 +16,24 @@ This is the full scope of what needs to be mastered:
    - Trees & Graphs
    - Hash Tables
    - Sorting & Binary Search
+
+1b. Algorithmic Patterns (applied as the lens for every problem)
+   - Sliding Window
+   - Two Pointers
+   - Fast & Slow Pointers
+   - Merge Intervals
+   - Cyclic Sort
+   - In-place Reversal of Linked List
+   - Tree BFS
+   - Tree DFS
+   - Two Heaps
+   - Subsets (BFS-based combinations/permutations)
+   - Modified Binary Search
+   - Top K Elements (Heap)
+   - K-way Merge
+   - Topological Sort
+   - Backtracking
    - Dynamic Programming
-   - Recursion & Backtracking
 
 2. System Design (HLD)
    - Fundamentals: scalability, CAP theorem, consistency models

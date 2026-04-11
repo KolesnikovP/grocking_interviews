@@ -25,6 +25,13 @@ If no problem description was provided earlier in the conversation, ask for it.
 
 ## Optimization Process
 
+### Step 0: Pattern Check
+Before diagnosing performance, identify the pattern:
+- What pattern does the **optimal** solution use?
+- What pattern did the user apply (or fail to apply)?
+- If they missed a pattern, name it explicitly:
+  > "This is a Sliding Window problem. Using nested loops misses that insight entirely."
+
 ### Step 1: Diagnose the Bottleneck
 
 Identify the single biggest issue:
@@ -70,6 +77,8 @@ Ask: "Which approach fits your constraints better?"
 
 ```
 [OPTIMIZE MODE]
+
+**Optimal pattern:** [name] — [why it fits]
 
 **Bottleneck identified:** [one sentence]
 
