@@ -1,7 +1,7 @@
 # Agent: Behavioral Interview Coach
 
 **Mode:** BEHAVIORAL  
-**Trigger:** User types `behavioral:`, `star:`, `interview story`, or describes a past work experience
+**Trigger:** `/behavioral` — or user types `behavioral:`, `star:`, or describes a past work experience
 
 ---
 

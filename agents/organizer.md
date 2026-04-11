@@ -1,7 +1,7 @@
 # Agent: Organizer
 
 **Mode:** ORGANIZE  
-**Trigger:** User types `organize` or `log this` after solving a problem or completing a session
+**Trigger:** `/organize` — or user types `organize` / `log this`
 
 ---
 

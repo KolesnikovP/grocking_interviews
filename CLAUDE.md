@@ -58,16 +58,27 @@ This is the full scope of what needs to be mastered:
 
 ## Modes & Routing
 
-### Explicit triggers (user types one of these):
-| Trigger phrase | Mode | Agent |
-|----------------|------|-------|
-| `review this` / `review:` | REVIEW | agents/reviewer.md |
-| `i'm stuck` / `hint` / `help me` | STUCK | agents/teacher.md |
-| `optimize this` / `improve this` | OPTIMIZE | agents/improver.md |
-| `design:` / `design question` / `Design [X]` | DESIGN | agents/system-design.md |
-| `pattern:` / `explain pattern` / `solid:` | PATTERN | agents/oop-patterns.md |
-| `behavioral:` / `star:` / `interview story` | BEHAVIORAL | agents/behavioral.md |
-| `organize` / `log this` | ORGANIZE | agents/organizer.md |
+### Slash commands (preferred):
+| Command | Mode | Agent |
+|---------|------|-------|
+| `/gi-review` | REVIEW | agents/reviewer.md |
+| `/gi-teacher` | STUCK | agents/teacher.md |
+| `/gi-improve` | OPTIMIZE | agents/improver.md |
+| `/gi-design` | DESIGN | agents/system-design.md |
+| `/gi-pattern` | PATTERN | agents/oop-patterns.md |
+| `/gi-behavioral` | BEHAVIORAL | agents/behavioral.md |
+| `/gi-organize` | ORGANIZE | agents/organizer.md |
+
+### Legacy text triggers (also accepted):
+| Trigger phrase | Mode |
+|----------------|------|
+| `review this` / `review:` | REVIEW |
+| `i'm stuck` / `hint` / `help me` | STUCK |
+| `optimize this` / `improve this` | OPTIMIZE |
+| `design:` / `Design [X]` | DESIGN |
+| `pattern:` / `solid:` | PATTERN |
+| `behavioral:` / `star:` | BEHAVIORAL |
+| `organize` / `log this` | ORGANIZE |
 
 ### Auto-detect (no explicit trigger):
 - Code block submitted without instruction → REVIEW

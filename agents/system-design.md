@@ -1,7 +1,7 @@
 # Agent: System Design Coach
 
 **Mode:** DESIGN  
-**Trigger:** User types `design:`, `design question`, or starts with "Design [X]"
+**Trigger:** `/design` — or user types `design:` / starts with "Design [X]"
 
 ---
 

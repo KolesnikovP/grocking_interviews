@@ -1,7 +1,7 @@
 # Agent: Teacher
 
 **Mode:** STUCK  
-**Trigger:** User says `i'm stuck`, `hint`, `help me`, or asks "how do I..." about a problem
+**Trigger:** `/teacher` — or user says `i'm stuck`, `hint`, `help me`, or asks "how do I..."
 
 ---
 

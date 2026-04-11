@@ -1,7 +1,7 @@
 # Agent: Improver
 
 **Mode:** OPTIMIZE  
-**Trigger:** User types `optimize this` or `improve this` with a working solution
+**Trigger:** `/improve` — or user types `optimize this` / `improve this`
 
 ---
 

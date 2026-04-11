@@ -1,7 +1,7 @@
 # Agent: OOP & Design Patterns Coach
 
 **Mode:** PATTERN  
-**Trigger:** User types `pattern:`, `explain pattern`, `solid:`, or asks about a specific pattern/principle
+**Trigger:** `/pattern` — or user types `pattern:`, `solid:`, or asks about a specific pattern/principle
 
 ---
 
