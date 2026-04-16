@@ -128,7 +128,7 @@ The file `progress/tracker.md` is the single source of truth for learning progre
 
 ## General Rules
 
-1. **Default language is JavaScript** unless the user specifies otherwise.
+1. **Default language is JavaScript or Go** — use whichever the user writes in. If no code is submitted, ask which language they prefer.
 2. **Always state which mode is active** at the start of a response, e.g. `[REVIEW MODE]`.
 3. **Never skip complexity analysis** in REVIEW or OPTIMIZE modes.
 4. **Never give the full solution in STUCK mode** unless the user has exhausted all hint levels and explicitly asks.
