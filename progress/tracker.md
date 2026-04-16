@@ -16,12 +16,12 @@
 
 | Topic | Status | Sessions | Last Practiced | Notes |
 |-------|--------|----------|----------------|-------|
-| Arrays & Strings | In Progress | 1 | 2026-04-10 | Empty slice guard missed on first attempt |
+| Arrays & Strings | Practiced | 5 | 2026-04-16 | Two Sum PASS; Contains Duplicate PASS; Valid Anagram PASS; Group Anagrams PASS (Medium) |
 | Linked Lists | Not Started | 0 | — | |
 | Stacks & Queues | Not Started | 0 | — | |
 | Trees & Tries | Not Started | 0 | — | |
 | Graphs | Not Started | 0 | — | |
-| Hash Tables | Not Started | 0 | — | |
+| Hash Tables | Practiced | 4 | 2026-04-16 | Two Sum — complement lookup; Contains Duplicate — set pattern; Valid Anagram — frequency map; Group Anagrams — sorted key grouping |
 | Sorting & Binary Search | Not Started | 0 | — | |
 | Dynamic Programming | Not Started | 0 | — | |
 | Recursion & Backtracking | Not Started | 0 | — | |
@@ -101,7 +101,7 @@
 | Goroutines & channels | Not Started | 0 | — | |
 | Error handling patterns | Not Started | 0 | — | |
 | defer / panic / recover | Not Started | 0 | — | |
-| Slices, maps, structs | Not Started | 0 | — | |
+| Slices, maps, structs | In Progress | 1 | 2026-04-13 | make vs var nil map; map[K]struct{} set pattern; struct literals; zero-size types |
 
 ---
 
@@ -145,3 +145,7 @@
 | Date | Problem | Platform | Topic | Lang | Difficulty | Rating |
 |------|---------|----------|-------|------|------------|--------|
 | 2026-04-10 | Smallest Integer Finder | Codewars | Arrays | Go | Easy | BORDERLINE |
+| 2026-04-12 | Two Sum | LeetCode | Arrays / Hash Tables | Go | Easy | PASS |
+| 2026-04-13 | Contains Duplicate | LeetCode | Arrays / Hash Tables | Go | Easy | PASS |
+| 2026-04-15 | Valid Anagram | LeetCode | Arrays / Hash Tables | Go | Easy | PASS |
+| 2026-04-16 | Group Anagrams | LeetCode | Arrays / Hash Tables | Go | Medium | PASS |
