@@ -16,7 +16,7 @@
 
 | Topic | Status | Sessions | Last Practiced | Notes |
 |-------|--------|----------|----------------|-------|
-| Arrays & Strings | Practiced | 5 | 2026-04-16 | Two Sum PASS; Contains Duplicate PASS; Valid Anagram PASS; Group Anagrams PASS (Medium) |
+| Arrays & Strings | Practiced | 6 | 2026-04-17 | Two Sum PASS; Contains Duplicate PASS; Valid Anagram PASS; Group Anagrams PASS; Two Sum II PASS — first Two Pointers solve, no hints needed |
 | Linked Lists | Not Started | 0 | — | |
 | Stacks & Queues | Not Started | 0 | — | |
 | Trees & Tries | Not Started | 0 | — | |
@@ -149,3 +149,4 @@
 | 2026-04-13 | Contains Duplicate | LeetCode | Arrays / Hash Tables | Go | Easy | PASS |
 | 2026-04-15 | Valid Anagram | LeetCode | Arrays / Hash Tables | Go | Easy | PASS |
 | 2026-04-16 | Group Anagrams | LeetCode | Arrays / Hash Tables | Go | Medium | PASS |
+| 2026-04-17 | Two Sum II | LeetCode | Arrays / Two Pointers | Go | Medium | PASS |
