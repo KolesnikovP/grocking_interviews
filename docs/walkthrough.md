@@ -2,7 +2,7 @@
 
 This is a complete session from scratch — picking a problem, getting stuck, working through hints, reviewing the solution, and logging progress. Every command is real. Every response is representative of what you'll actually see.
 
-The problem used here is **Best Time to Buy and Sell Stock** (LeetCode #121, Easy). It's a good first example because most people's instinct is a brute-force O(n²) approach, and the optimal solution requires a small but non-obvious insight.
+The problem used here is **Two Sum** (LeetCode #1, Easy). It's the first problem on LeetCode for a reason — the brute force solution is obvious, and the optimal solution introduces one of the most important patterns you'll use everywhere: the hash map lookup.
 
 ---
 
@@ -28,43 +28,41 @@ If you're not sure where to start, ask the organizer:
 > ```
 > [ORGANIZE MODE]
 >
-> Based on your tracker:
-> - Arrays & Strings: Practiced (5 sessions)
-> - Hash Tables: Practiced (4 sessions)
-> - Everything else: Not Started
+> Your tracker is empty — nothing practiced yet.
 >
-> Recommended next: continue Arrays — you haven't hit Sliding Window yet.
-> Good next problem: Best Time to Buy and Sell Stock (LeetCode #121)
-> Pattern: Sliding Window / one-pass scan
+> Recommended starting point: Arrays & Strings.
+> Good first problem: Two Sum (LeetCode #1)
+> Pattern: Hash Map
+> Difficulty: Easy
 > ```
 
-> 💡 The organizer reads `progress/tracker.md` to make this recommendation. It always prioritizes in-progress topics over untouched ones.
+> 💡 The organizer reads `progress/tracker.md` to make this recommendation. On a fresh install, it points you to the beginning of the curriculum.
 
 ---
 
 ## 3. Attempt the problem
 
-Go to [LeetCode #121](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/). Read it. Give yourself 10–15 minutes before asking for help.
+Go to [LeetCode #1](https://leetcode.com/problems/two-sum/). Read it. Give yourself 10–15 minutes before asking for help.
 
-A common first attempt — check every pair of days:
+**The problem:** Given an array of integers and a target, return the indices of the two numbers that add up to the target.
+
+A natural first attempt — check every pair:
 
 ```go
 // first attempt — O(n²)
-func maxProfit(prices []int) int {
-    maxP := 0
-    for i := 0; i < len(prices); i++ {
-        for j := i + 1; j < len(prices); j++ {
-            profit := prices[j] - prices[i]
-            if profit > maxP {
-                maxP = profit
+func twoSum(nums []int, target int) []int {
+    for i := 0; i < len(nums); i++ {
+        for j := i + 1; j < len(nums); j++ {
+            if nums[i]+nums[j] == target {
+                return []int{i, j}
             }
         }
     }
-    return maxP
+    return []int{}
 }
 ```
 
-It's correct. But it's slow. Before submitting, ask for a review.
+It works. But there's a faster way. Before submitting, get it reviewed.
 
 ---
 
@@ -72,21 +70,19 @@ It's correct. But it's slow. Before submitting, ask for a review.
 
 > **You:** `/gi-review`
 >
-> Problem: Best Time to Buy and Sell Stock (LeetCode #121)
+> Problem: Two Sum (LeetCode #1)
 > Language: Go
 >
 > ```go
-> func maxProfit(prices []int) int {
->     maxP := 0
->     for i := 0; i < len(prices); i++ {
->         for j := i + 1; j < len(prices); j++ {
->             profit := prices[j] - prices[i]
->             if profit > maxP {
->                 maxP = profit
+> func twoSum(nums []int, target int) []int {
+>     for i := 0; i < len(nums); i++ {
+>         for j := i + 1; j < len(nums); j++ {
+>             if nums[i]+nums[j] == target {
+>                 return []int{i, j}
 >             }
 >         }
 >     }
->     return maxP
+>     return []int{}
 > }
 > ```
 
@@ -94,25 +90,25 @@ It's correct. But it's slow. Before submitting, ask for a review.
 > ```
 > [REVIEW MODE]
 >
-> Pattern: Sliding Window — this is a classic one-pass scan.
+> Pattern: Hash Map — this is the classic complement lookup problem.
 > You applied brute force instead. That's the main finding.
 >
 > Correctness: ✓ — produces correct output for all standard cases.
 >
 > Edge cases missed:
-> - Single-element array (returns 0 — correct, but worth verifying)
-> - Already sorted descending (returns 0 — correct)
+> - Empty array (would return [] — acceptable)
+> - No valid pair exists (problem guarantees one exists, so this is fine)
 >
-> Time complexity:  O(n²) — nested loops, each pair evaluated once
+> Time complexity:  O(n²) — every pair checked once
 > Space complexity: O(1) — no auxiliary structures
 >
 > Code quality:
-> - Variable names are clear (maxP, profit)
+> - Clean and readable
 > - Logic is easy to follow
 >
 > Rating: BORDERLINE
-> Correct, but the nested loop won't pass on large inputs (n = 100,000).
-> A linear solution exists and is expected here.
+> Correct, but O(n²) won't pass on large inputs. A linear solution
+> exists using a hash map — expected in interviews.
 >
 > Type `/gi-improve` to see the optimized version.
 > ```
@@ -129,80 +125,81 @@ It's correct. But it's slow. Before submitting, ask for a review.
 > ```
 > [OPTIMIZE MODE]
 >
-> Optimal pattern: Sliding Window (one-pass scan)
+> Optimal pattern: Hash Map (complement lookup)
 >
-> The key insight: you don't need to check every pair.
-> As you walk forward, track the lowest price seen so far.
-> At each step, the best profit you can make TODAY is prices[i] - minSoFar.
+> The key insight: instead of checking every pair, ask a different
+> question at each step. For the current number, what number would
+> complete the target? Look that number up instantly in a map
+> instead of scanning the rest of the array.
 >
-> Bottleneck: the nested loop — O(n²) because you re-check
-> every previous day for every current day.
+> Bottleneck: the nested loop — O(n²) because for every element
+> you scan all remaining elements.
 >
 > Complexity comparison:
 > |        | Time  | Space |
 > |--------|-------|-------|
 > | Before | O(n²) | O(1)  |
-> | After  | O(n)  | O(1)  |
+> | After  | O(n)  | O(n)  |
 >
 > Optimized solution:
 >
-> func maxProfit(prices []int) int {
->     minPrice := prices[0]
->     maxP := 0
+> func twoSum(nums []int, target int) []int {
+>     m := make(map[int]int)
 >
->     for _, price := range prices {
->         if price < minPrice {
->             minPrice = price
->         } else if price-minPrice > maxP {
->             maxP = price - minPrice
+>     for i, v := range nums {
+>         match := target - v
+>         if val, ok := m[match]; ok {
+>             return []int{i, val}
 >         }
+>         m[v] = i
 >     }
 >
->     return maxP
+>     return []int{}
 > }
 >
-> Why this works: you're sliding a conceptual window forward.
-> The left edge is always the cheapest day seen so far.
-> The right edge is today. You never need to look back further
-> than your current minimum — if a cheaper day existed before it,
-> that IS your minimum already.
+> Why this works: for each number, compute its complement
+> (target - v). Check if that complement is already in the map.
+> If yes — you found your pair. If no — store the current number
+> and move on. One pass, done.
+>
+> Note: we trade O(1) space for O(n) space to get from O(n²) to O(n)
+> time. In interviews, this trade is almost always correct.
 > ```
 
-> 💡 The agent always shows before/after complexity. That comparison is the point — understanding *what you traded* is how pattern recognition builds.
+> 💡 The agent always explains the trade-off (time vs space). Understanding why a solution is better — not just that it is — is what transfers to new problems.
 
 ---
 
 ## 6. Write the final solution file
 
 ```bash
-touch solutions/algorithms/arrays/best-time-to-buy-and-sell-stock.go
+touch solutions/algorithms/arrays/two-sum.go
 ```
 
 ```go
-// Problem: Best Time to Buy and Sell Stock
+// Problem: Two Sum
 // Platform: LeetCode
 // Difficulty: Easy
 // Date: 2026-04-18
 // Time complexity: O(n)
-// Space complexity: O(1)
+// Space complexity: O(n)
 // Rating: PASS (after /gi-improve from BORDERLINE)
-// Notes: Sliding window — track minPrice as left edge, compute profit at each step
+// Notes: Hash map complement lookup — store value→index, check if (target - v) exists before inserting
 
 package arrays
 
-func maxProfit(prices []int) int {
-	minPrice := prices[0]
-	maxP := 0
+func twoSum(nums []int, target int) []int {
+	m := make(map[int]int)
 
-	for _, price := range prices {
-		if price < minPrice {
-			minPrice = price
-		} else if price-minPrice > maxP {
-			maxP = price - minPrice
+	for i, v := range nums {
+		match := target - v
+		if val, ok := m[match]; ok {
+			return []int{i, val}
 		}
+		m[v] = i
 	}
 
-	return maxP
+	return []int{}
 }
 ```
 
@@ -212,31 +209,31 @@ func maxProfit(prices []int) int {
 
 > **You:** `/gi-organize`
 >
-> Problem: Best Time to Buy and Sell Stock
+> Problem: Two Sum
 > Platform: LeetCode
-> Topic: Arrays / Sliding Window
+> Topic: Arrays / Hash Tables
 > Difficulty: Easy
 > Language: Go
 > Reviewer rating: PASS (after improve)
 > Stuck: no
-> Notes: Started brute force O(n²), reviewer flagged it, improved to O(n) with sliding window
+> Notes: Started with brute force O(n²), reviewer flagged BORDERLINE, improved to O(n) with hash map complement lookup
 
 > **Agent:**
 > ```
 > [ORGANIZE MODE]
 >
-> Filed: solutions/algorithms/arrays/best-time-to-buy-and-sell-stock.go
-> Tracker updated: Arrays & Strings → Practiced (6 sessions)
+> Filed: solutions/algorithms/arrays/two-sum.go
+> Tracker updated: Arrays & Strings → In Progress (1 session)
+>                  Hash Tables → In Progress (1 session)
 >
 > Progress snapshot:
 > - Confident:    0 topics
-> - Practiced:    2 topics (Arrays & Strings, Hash Tables)
+> - In Progress:  2 topics (Arrays & Strings, Hash Tables)
 > - Not Started: 37 topics
 >
-> Recommended next: continue Arrays — try a Medium problem next
-> to push toward Confident status.
-> Good next problem: Container With Most Water (LeetCode #11)
-> Pattern: Two Pointers
+> Recommended next: stay on Arrays — try Contains Duplicate (LeetCode #217)
+> Pattern: Hash Set
+> Difficulty: Easy
 > ```
 
 ---
@@ -244,9 +241,9 @@ func maxProfit(prices []int) int {
 ## 8. Commit your solution
 
 ```bash
-git add solutions/algorithms/arrays/best-time-to-buy-and-sell-stock.go
+git add solutions/algorithms/arrays/two-sum.go
 git add progress/tracker.md
-git commit -m "feat: add Best Time to Buy and Sell Stock (Go, Easy, PASS)"
+git commit -m "feat: add Two Sum (Go, Easy, PASS)"
 git push
 ```
 
@@ -258,9 +255,9 @@ git push
 
 | Step | Command | What happened |
 |---|---|---|
-| Picked a problem | `/gi-organize` | Organizer read the tracker and surfaced the next gap |
+| Picked a problem | `/gi-organize` | Organizer read the tracker and recommended the first problem |
 | Got a review | `/gi-review` | Rated BORDERLINE — correct but O(n²) |
-| Optimized | `/gi-improve` | Agent explained the Sliding Window insight |
+| Optimized | `/gi-improve` | Agent explained the hash map complement lookup |
 | Logged progress | `/gi-organize` | Tracker updated, next problem recommended |
 
 ---
@@ -270,20 +267,19 @@ git push
 If you couldn't write anything at all, use `/gi-teacher` before reviewing:
 
 > **You:** `/gi-teacher`
-> I'm working on Best Time to Buy and Sell Stock.
-> I don't know how to approach it — checking every pair feels wrong.
+> I'm working on Two Sum. I don't know where to start.
 
 > **Agent:**
 > ```
 > [STUCK MODE — Socratic]
 >
-> Good instinct. Let's think about what you actually need.
+> Let's start simple. What do you know about the two numbers
+> you're looking for?
 >
-> If you're standing on day 5 and thinking about selling,
-> what's the only thing that determines your profit?
+> If one of them is 3 and the target is 9, what must the other one be?
 > ```
 
-The teacher asks questions until you reach the "track the minimum" insight yourself. It won't show you the solution — that's the point. Once you work it out, proceed to `/gi-review` as normal.
+The teacher asks questions until you reach the "complement lookup" insight yourself. It won't show you the solution — that's the point. Once you work it out, proceed to `/gi-review` as normal.
 
 ---
 
