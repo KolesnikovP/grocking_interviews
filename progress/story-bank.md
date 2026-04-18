@@ -7,7 +7,7 @@
 
 ## Stories by Theme
 
-*(No stories yet. Start with `behavioral: build me a conflict story` or describe a past experience.)*
+*(No stories yet. Start with `/gi-behavioral` and describe a past work experience.)*
 
 ---
 
