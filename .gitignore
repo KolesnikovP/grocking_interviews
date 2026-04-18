@@ -9,3 +9,5 @@ Thumbs.db
 # Go binaries
 *.exe
 *.out
+.claude/settings.local.json
+.claude/settings.local.json
